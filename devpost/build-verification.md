@@ -2,31 +2,9 @@
 
 ## Setup evidence from November 25, 2026
 
-From the Lens project folder:
+The Devpost Learn skill pack was installed from the Lens project folder with `npx skills add challengepost/learn-specs --all -y`. The lockfile matched upstream commit `5d8bc0800346d38e468c29b15afcb7ca92280005`. A fresh coding-agent session ran the official `plan-lens` workflow, read both references and the template, and reconciled the approved brief.
 
-```text
-npx skills add challengepost/learn-specs --all -y
-Source: https://github.com/challengepost/learn-specs.git
-Found 1 skill
-Skill: plan-lens
-Installed 1 skill
-✓ .\.agents\skills\plan-lens
-  universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +19 more
-```
-
-The project lockfile and upstream HEAD matched at commit `5d8bc0800346d38e468c29b15afcb7ca92280005`. Codex discovered `plan-lens` in the trusted project folder. The original brief was filled directly from the template. After the exact install, the official `$plan-lens` was invoked in a fresh Codex CLI session. It read the installed skill, both AR design and Preview references, and the brief template, then reconciled the approved brief.
-
-The following is the redacted listing from `codex mcp list`:
-
-```text
-lens-studio  http://localhost:50040/mcp  -  enabled  Bearer token
-```
-
-The live CLAD diagnostic returned:
-
-```json
-{"ok":true,"projectPath":"C:/Projects/02_Hackathons_and_Flagship_Apps/GazeAnchor/GazeAnchor/GazeAnchor.esproj","targetPlatform":"Spectacles","intendedPlatforms":null,"lensStudioVersion":"5.23.2.26081320","isAuthorized":true}
-```
+The Lens Studio MCP connection was enabled with bearer authentication. The live CLAD diagnostic confirmed the authorized `GazeAnchor.esproj` project, the Spectacles target, and Lens Studio `5.23.2.26081320`.
 
 `ListAllPanels` returned eight panels, including Preview. `ListInstalledPackagesTool` returned five packages including Spectacles Interaction Kit, Spectacles UI Kit, and LEAF. The current CLAD 1.1.0 router requires Lens Studio 5.25+. The official Snap `release/5.22` CLAD workflow passed its live preflight on this authorized Lens Studio 5.23.2 setup. The first integrated preview rendered room geometry. Control readability and spatial-audio warnings still needed fixes at the setup verification pause.
 
@@ -47,7 +25,7 @@ A Preview capture is evidence of rendering only. Reachability, dwell cancellatio
 
 ## Recovery and Preview retest on November 25, 2026
 
-- A Codex session started from the Lens project directory reached the registered Lens Studio MCP. The editor confirmed `GazeAnchor.esproj`, Lens Studio `5.23.2.26081320`, and the Spectacles target. Preview 1 was running SPECS 27 in Interactive mode. The approved Devpost brief and planning skill references are present.
+- A coding-agent session started from the Lens project directory reached the registered Lens Studio MCP. The editor confirmed `GazeAnchor.esproj`, Lens Studio `5.23.2.26081320`, and the Spectacles target. Preview 1 was running SPECS 27 in Interactive mode. The approved Devpost brief and planning skill references are present.
 - The editor initially logged a pending file synchronization. Later logs showed that synchronization reached the compiler and exposed three independent failures. GazeAnchor referenced the removed `completed` counter (TS2339). Leaf 4.0.0 and AiPreviewAgentInteract 4.0.0 referenced package names from the modern Interaction Kit and UI Kit; Leaf also emitted TS2352. The original 300-second timeout's exact cause remains undetermined.
 - Corrected GazeAnchor's successful selection count and the invalid byte in the sweep log. Backed up the two incompatible package archives and metadata, the scene, manifest, and original controller, then isolated those packages via Lens Studio's Editor API. The removal left an empty script component on the optional AI Preview handler. The regular native Preview input and runtime scene inspection tools continued to work. The backup directory is `%TEMP%/GazeAnchor-recovery-719f382bdd8d4d3aa4c024172a5ef773`.
 - Lens Studio logged `TypeScript compilation succeeded!` at 14:31:58 IST and initialized the current Lens at 14:31:59. The startup log showed the restricted Fixed baseline of **1/3 reachable**.
@@ -93,3 +71,9 @@ Saved the project in Lens Studio and closed it normally. The new Lens Studio pro
 - Review of the recording showed the original text-glyph arrow was not visibly rendered during its enabled window. A camera-relative mesh replaced the glyph, and T12 was rerun with enough hold time to inspect the cue. At 18:05:56 IST, the rendered arrow was visible to the right and then cleared on return. [Off-view arrow frame](evidence/off-view-cue.png)
 - The final serial run on the checked sources passed **T01 through T12**. T08 completed Water, Temperature and Assistance with explicit acknowledgment. T09 proved Reposition failure, reconnect, explicit retry and reset. T11 measured fan rotation at **11.88 rad/s High**, **3.93 rad/s Low**, and stationary Off. The benchmark and test logs provide the run data. [Final Lens log excerpts](evidence/preview-results.txt)
 - The local demonstration is a 1920 × 1080 H.264 MP4, 2:55, with captions and local synthesized narration. It uses excerpts of the actual SPECS 27 Interactive Preview, including the final mesh cue. Timing overlays cite observed benchmark values. Device audio remains unverified.
+
+## Interactive Devpost plan-lens interview completed
+
+Sanskar Tiwari answered the seven official interview topics and the follow-up about extremely narrow ranges in the live planning interview. The project team is Shambhavi Patil and Sanskar Tiwari. The interview retained GazeAnchor, powered by ASAE, and the same-bounds 1/3 to 3/3 independent-reachability narrative. Decisions covered simulated appliance and caregiver interactions, world-anchored tethers and clear central vision, head-direction dwell with optional simulated switch, contextual visibility, and five repeatable judge-run Preview checks.
+
+Sanskar explicitly put sequential selection across room controls in future scope. For envelopes that cannot safely fit three independent controls, the accepted behavior is truthful reachability, preservation of safe targets, an accessible explanation, and optional comfortable recalibration. The brief and planning docs record these decisions. Prior Preview and LEAF results remain historical evidence. The interview itself provides design evidence, and the new narrow-envelope behavior needs separate verification.

@@ -36,3 +36,12 @@ Workspaces/**
 
 # Added by Lens Studio (LEAF plugin)
 leaf_plugin_settings.json
+
+# Local editor instructions, environment files, and OS metadata
+/AGENTS.md
+/CLAUDE.md
+.env
+.env.*
+!.env.example
+Thumbs.db
+Desktop.ini

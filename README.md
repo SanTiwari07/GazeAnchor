@@ -1,5 +1,7 @@
 # GazeAnchor
 
+**Room controls within comfortable reach.**
+
 GazeAnchor is a SPECS Lens that adapts room controls to a seated wearer’s comfortable head movement. A wearer with limited arm, head, or speech mobility can operate a simulated lamp and fan and send a local comfort request using head direction and dwell.
 
 ## How the Lens adapts
@@ -14,7 +16,7 @@ Spatial placement preserves the relationship between each control and the applia
 
 ## Run in Lens Studio
 
-For a Git clone, fetch the packaged assets with `git lfs pull` before opening the project.
+Install Git LFS, clone this repository, and run `git lfs pull` from the checkout before opening the project.
 
 1. Open `GazeAnchor.esproj` in Lens Studio **5.23.2.26081320**. The project targets Spectacles and includes the legacy Spectacles Interaction Kit and Spectacles UI Kit.
 2. Set Preview to **SPECS 27 Interactive**. Right-drag to look around and click to simulate a pinch. Start at the seated neutral view.
@@ -37,7 +39,7 @@ Run the standalone coverage with Node.js 26 and `node --test tests/*.test.mjs`. 
 
 In Lens Studio Interactive Preview, the restricted preset changed from **1/3 Fixed** to **3/3 Adaptive**. The guided demonstration reached the same counts with measured yaw **−12° to +11°** and pitch **−7° to +8°**. The lamp stayed on its object. LEAF measured **16.28 cm** between the restricted preset’s two proxy centers. See the [verification evidence](devpost/build-verification.md) and [requirement traceability](devpost/requirement-traceability.md).
 
-All **12 LEAF scenarios** and **11 standalone tests** passed. In the final benchmark, Fixed completed one task and the Adaptive run completed three in **7.48 s** under simulated head input. The full record includes the incomplete Fixed trial and both observed travel totals. [Testing report](devpost/testing-report.md) · [Measured benchmark](devpost/benchmark-results.md)
+The recorded Preview acceptance run passed all **12 LEAF scenarios**. All **11 standalone tests** passed during repository preparation. In the final benchmark, Fixed completed one task and the Adaptive run completed three in **7.48 s** under simulated head input. The full record includes the incomplete Fixed trial and both observed travel totals. [Testing report](devpost/testing-report.md) · [Measured benchmark](devpost/benchmark-results.md)
 
 ## Simulation and limitations
 
@@ -54,4 +56,6 @@ GazeAnchor uses camera-forward head direction and mouse-simulated Preview input.
 - Shambhavi Patil
 - Sanskar Tiwari
 
-See the [approved design brief](devpost/design-brief.md) for the Learn AR with SPECS Round 2 project.
+The [approved design brief](devpost/design-brief.md), [planning documents](docs/planning/README.md), and [submission checklist](devpost/submission-checklist.md) document the Learn AR with SPECS Round 2 workflow. The team used the Devpost Learn skill pack in a coding agent and built the Lens with CLAD, Lens Studio, and Lens Studio MCP.
+
+The 2:55 Preview demonstration has been recorded for submission. Its public YouTube link is pending.

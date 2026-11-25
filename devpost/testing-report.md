@@ -26,3 +26,7 @@ All 11 cases passed with `node --test tests/*.test.mjs`. Five cases exercise sig
 The same authored project ran after a normal save, close and reopen. Repeated Restricted, Moderate and Wide switching produced respectively **1/3**, **2/3**, and **3/3** fixed targets. The same asymmetric sweep was reproduced via native Preview input and LEAF. Reset Demo was exercised after device commands, a delivered care request, and the completed task sequence. The cold-start run initially exposed a menu navigation cooldown defect and a fixed-duration test wait. Later retests used verified current compiler imports. The [build verification record](build-verification.md) documents the failures and corrections.
 
 Dedicated invalid-sweep interaction, physically worn tracking, long-duration comfort, external accessibility hardware, real devices, remote delivery, sound audibility and runtime frame-time profiling remain open.
+
+## Post-interview verification
+
+The five [judge-facing Preview checks](design-brief.md#interview-acceptance-checks) supplement the historical results above. A full judge walkthrough, physical audibility, and the new narrow-envelope shortfall explanation and optional recalibration behavior need evidence against those checks. Sequential selection across room controls is a proposed future enhancement. Existing action-menu navigation and the simulated switch remain part of the recorded build.

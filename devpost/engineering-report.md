@@ -6,7 +6,7 @@ GazeAnchor is a working SPECS Preview Lens for room control and local simulated 
 
 ## B. Environment and recovery
 
-The active and saved project is `GazeAnchor.esproj`, targeting Spectacles on Lens Studio **5.23.2.26081320**. Project-root Codex connected to the registered Lens Studio MCP. The editor ran SPECS 27 in Interactive mode and compiled successfully. The approved Devpost planning brief and skill sources are included. The current CLAD router targets a newer baseline, so the project uses the verified 5.22-compatible workflow and installed 5.23.2 APIs.
+The active and saved project is `GazeAnchor.esproj`, targeting Spectacles on Lens Studio **5.23.2.26081320**. The project-root coding agent connected to the registered Lens Studio MCP. The editor ran SPECS 27 in Interactive mode and compiled successfully. The approved Devpost planning brief and skill sources are included. The current CLAD router targets a newer baseline, so the project uses the verified 5.22-compatible workflow and installed 5.23.2 APIs.
 
 The initial synchronization timeout had no conclusive root cause. Subsequent logs isolated the stale GazeAnchor counter reference and incompatible Preview and LEAF package imports. The unsupported helper and LEAF 4.0.0 were backed up and isolated. Legacy Leaf 2.0.0 compiled with the existing Spectacles Interaction Kit 2.0.0 and registered the twelve scenarios. A normal save, close and reopen reproduced the Fixed baseline and the scenario list. [Detailed recovery and retest record](build-verification.md)
 
@@ -65,7 +65,7 @@ The compiler error was corrected by reading the successful selection count. Pack
 
 ## K. Git and submission
 
-The Lens project and evidence are committed on the existing local `main` branch. The project snapshot is `f705476` (`Restore and verify the GazeAnchor Lens`). No Git remote is configured. The approved brief, short description, submission checklist and local demonstration are ready for team review. Reviewer repository access, public YouTube upload and Devpost submission require the team's account access and authorization. [Submission checklist](submission-checklist.md)
+The Lens project and evidence are committed on the existing local `main` branch. The project snapshot is `f705476` (`Restore and verify the GazeAnchor Lens`). The initial verification took place before the Git remote was configured. The approved brief, short description, submission checklist and local demonstration are ready for team review. Reviewer repository access, public YouTube upload and Devpost submission require the team's account access and authorization. [Submission checklist](submission-checklist.md)
 
 ## L. Decisions and remaining deviations
 
@@ -77,4 +77,4 @@ The Lens project and evidence are committed on the existing local `main` branch.
 
 ## M. Readiness verdict
 
-**Ready for demo recording.** The primary and regression workflows ran in the saved, recovered project, and a local demo is available. Submission awaits repository hosting, YouTube publication and the authorized Devpost entry.
+**Demo recording available.** The primary and regression workflows ran in the saved, recovered project, and a local demo is available. Submission awaits YouTube publication and the authorized Devpost entry.

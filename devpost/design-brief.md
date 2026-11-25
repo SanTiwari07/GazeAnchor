@@ -4,6 +4,8 @@ status: approved
 
 # Design brief for GazeAnchor
 
+**Team:** Shambhavi Patil and Sanskar Tiwari. **Core technology:** Adaptive Spatial Accessibility Engine (ASAE).
+
 ## The one spatial moment
 
 In a furnished rehabilitation room, a seated wearer with limited head movement and limited ability to use their hands or speak uses head direction and dwell to operate the only control within comfortable reach, the lamp. A short calibration brings the tethered fan and care controls into range, changing reachability from 1/3 to 3/3 before the wearer sets the fan to High and requests water. The simulated caregiver acknowledgment closes the loop.
@@ -29,27 +31,40 @@ In a furnished rehabilitation room, a seated wearer with limited head movement a
 - The lamp keeps its object marker when its position falls inside the captured comfort range. The other controls move along short animations to stable, visibly separated positions inside the calibrated range. Thin tethers link them to the original objects.
 - Keep proxy centers clear of the central ±4° sightline. Keep proxies roughly 1 m away. Use 5 cm idle badges and action buttons at least 8 cm wide where feasible. Fit active choices within the calibrated range and check them in Preview.
 
+- Use 85% of the signed calibrated bounds as the conservative placement envelope. For the illustrative Restricted profile (±12° horizontal and ±8° vertical), the inset bounds are ±10.2° and ±6.8°. Aim for approximately 105 cm depth and 12 cm center spacing near 1 m. Prefer upper-right Fan and lower-right CareBeacon when the solver can preserve separation and clear the central ±4° to ±4.5° sightline.
+- If safe space runs out, preserve the maximum safely placeable set of independently selectable controls and show the computed 0/3–3/3 count. Explain the limitation and offer optional recalibration within the wearer's comfort. Sequential selection across room controls is future work and would have a separate accessibility measure.
+
 ## Hands and input
 
 - Capture the wearer's neutral position and comfortable left, right, up, and down limits. Keep each signed limit so asymmetric motion is represented. Show a labeled reproducible preset for demonstration and reset.
-- Aim with head direction and dwell. The narrow preset uses 950 ms. A short glance fills part of the ring and then clears without showing actions or issuing a command.
+- Aim with camera-forward head direction and adaptive EMA smoothing. The Wide, Moderate and Restricted presets use approximately 650, 800 and 950 ms, configurable from 500 to 1400 ms. Action confirmation uses about 75% of target dwell. Apply at least 450 ms of cooldown and require re-arming before repeating a command. A short glance fills part of the ring and then clears without showing actions or issuing a command.
 - After the target opens, use dwell to select actions. Provide a clickable SIK/UI Kit accessibility-switch simulation for the focused action and operator controls for the demo.
 
 ## When things show
 
 - Show resting markers with restrained, high-luminance labels. Show the comfort boundary and reachable count during the comparison and calibration. Once the transformation completes, keep the controls small until needed. Show task progress near the active room control (default) as the wearer completes each task. Reachability counts available controls, and task progress counts the lamp action, fan set to High, and acknowledged water request. Calibration updates reachability without advancing task progress.
 - During dwell, show a cyan progress ring. Show the actions only after the target opens and dismiss them on selection, cancellation, or exit.
-- Label request outcomes with words and color. When the simulated caregiver acknowledges off-view, play one spatial chime and show a small arrow toward the reachable acknowledgment marker. Hide the arrow when the wearer looks back.
+- Keep Delivered and Acknowledged visible until the relevant operator action, briefly confirm explicit Completion, and keep Delivery Failed and Retry available until resolved. Distinguish states with readable text and icons as well as color. When the simulated caregiver acknowledges off-view, play one spatial chime and show a small arrow toward the reachable acknowledgment marker. Hide the arrow when the wearer looks back.
 
-## Done criteria
+## Existing regression checks
 
-Each criterion is observable in Lens Studio's Interactive Preview.
+Keep these integrated checks alongside the interview acceptance criteria.
 
 1. Starting from a seated viewpoint in Fixed mode with the restricted profile, the Lens shows **1/3 reachable** and world anchors for three distinct room targets. Operate the lamp by dwell and confirm the room lamp responds and task progress reads **1/3**. Running the guided sweep saves the measured limits. Applying calibrated placement shows **3/3 reachable** when the captured range includes the lamp and permits both inside-range proxies. Proxies animate to distinct placements and remain visibly tethered to the original objects. Task progress stays at **1/3**.
 2. A quick glance at Fan causes no command. Holding through dwell opens its actions. Selecting High turns the simulated fan faster and advances task progress to **2/3**.
 3. Selecting Water creates a visibly simulated comfort request and leaves it delivered until the operator acts. With the wearer looking away, operator acknowledgment plays a single spatial chime and shows an arrow. The explicitly simulated acknowledgment advances task progress to **3/3**. Looking back reveals the acknowledgment, and the arrow clears. An offline simulation shows a delivery failure with retry and leaves task progress at **2/3** until acknowledgment.
 4. Reset Calibration clears captured bounds and adaptive placement. Repeat the guided sweep and recover the same layout for equivalent inputs. Reset Demo restores baseline mode, lamp and fan states, caregiver state, dwell indicators, and task progress (**0/3**) in the current Preview session.
 5. From the same seated neutral, record reachable counts, completed actions, and angular travel for each run. Mark any Fixed-mode tasks outside the calibrated range as incomplete.
+
+## Interview acceptance checks
+
+1. From the same seated neutral pose, use the Restricted ±12°/±8° profile in Fixed AR. Verify only Lamp is selectable, there are no proxies, and the calculated count is 1/3.
+2. Enable ASAE Adaptive with the same bounds. Verify Lamp stays anchored, Fan and CareBeacon move to separate reachable tethered proxies, the central sightline stays clear, and each target can be highlighted independently. Verify the computed count is 3/3. Repeat with different or asymmetric bounds and inspect the adapted layout.
+3. Use two-stage head-direction dwell to exercise Fan High, Low, Off and Lamp On, Dim, Off. Verify visible state changes, confirmation feedback, and halo closure. Repeat an action with the simulated switch.
+4. Briefly glance away during target and action dwell, introduce small camera jitter, then execute one command and keep looking. Verify progress resets on cancellation, selection remains predictable, and cooldown and re-arm prevent repeats. Inspect cancellation and command telemetry.
+5. Send Water through the CareBeacon proxy. Observe Pending and Delivered, wait without operator input, explicitly acknowledge off-view, follow the one-time chime and direction cue, and explicitly complete. Repeat offline and verify clear failure and accessible retry.
+
+Reset and repeat in the same Preview session. Record actual reachable counts, angular travel, completion time, commands, cancelled attempts and cooldown blocks. Disclose simulated room, appliance, operator, switch and camera inputs. Report physical usability and clinical effectiveness as unverified. For narrower bounds, independently verify honest counts, safe placement and optional recalibration. The five checks above use the Restricted demonstration profile where specified.
 
 ## Out of scope
 
