@@ -1,0 +1,52 @@
+November 25, 2026, IST | Lens Studio 5.23.2.26081320 | Preview 1 | Leaf 2.0.0
+Selected Lens-side messages from the final serial Preview run.
+
+18:05:51.252 LEAF RUNS: gazeanchor-t12-off-view-acknowledgment with args: []
+18:05:56.180 [GazeAnchor] Care acknowledged | chime=true | task 1/3
+18:05:57.028 [GazeAnchor] Acknowledgment cue cleared
+18:05:57.208 [GazeAnchor LEAF] T12 switch sent Water and the rightward acknowledgment cue cleared on return
+18:05:57.209 LEAF PASSED: gazeanchor-t12-off-view-acknowledgment
+18:06:23.631 LEAF RUNS: gazeanchor-t01-guided-calibration with args: []
+18:06:28.684 [GazeAnchor LEAF] T01 measured Measured   Y -12.0° / +11.0°   P -7.0° / +8.0° and placed 3/3 targets
+18:06:28.684 LEAF PASSED: gazeanchor-t01-guided-calibration
+18:06:37.172 LEAF RUNS: gazeanchor-t02-tether-placement with args: []
+18:06:42.630 [GazeAnchor LEAF] T02 fan/care proxy separation 16.28 cm
+18:06:42.631 LEAF PASSED: gazeanchor-t02-tether-placement
+18:06:51.094 LEAF RUNS: gazeanchor-t03-brief-glance with args: []
+18:06:52.078 [GazeAnchor LEAF] T03 a 450 ms glance showed dwell progress without a command
+18:06:52.078 LEAF PASSED: gazeanchor-t03-brief-glance
+18:07:01.345 LEAF RUNS: gazeanchor-t04-dwell-jitter with args: []
+18:07:03.995 [GazeAnchor LEAF] T04 ±1.5° jitter and sustained gaze left Lamp On with exactly one action
+18:07:03.996 LEAF PASSED: gazeanchor-t04-dwell-jitter
+18:07:17.904 LEAF RUNS: gazeanchor-t05-dwell-timing with args: []
+18:07:21.090 [GazeAnchor LEAF] T05 700 ms after visible acquisition opened 600 ms dwell only
+18:07:21.090 LEAF PASSED: gazeanchor-t05-dwell-timing
+18:07:34.157 LEAF RUNS: gazeanchor-t06-nearest-overlap with args: []
+18:07:38.708 [GazeAnchor LEAF] T06 both registration orders chose the 0.5° marker over the 2.1° marker
+18:07:38.708 LEAF PASSED: gazeanchor-t06-nearest-overlap
+18:07:49.467 LEAF RUNS: gazeanchor-t07-cancel-dwell with args: []
+18:07:50.566 [GazeAnchor LEAF] T07 leaving a ≥75%-filled dwell ring cleared it without changing Lamp
+18:07:50.566 LEAF PASSED: gazeanchor-t07-cancel-dwell
+18:08:02.417 LEAF RUNS: gazeanchor-t08-explicit-acknowledgment with args: []
+18:08:17.318 [GazeAnchor] Care acknowledged | chime=false | task 1/3
+18:08:17.536 [GazeAnchor LEAF] T08 Water remained Delivered for over 10 s until operator input
+18:08:24.201 [GazeAnchor] Care acknowledged | chime=false | task 1/3
+18:08:24.431 [GazeAnchor LEAF] T08 second-page request completed | Temperature
+18:08:32.027 [GazeAnchor] Care acknowledged | chime=false | task 1/3
+18:08:32.263 [GazeAnchor LEAF] T08 second-page request completed | Assistance
+18:08:32.264 LEAF PASSED: gazeanchor-t08-explicit-acknowledgment
+18:08:44.296 LEAF RUNS: gazeanchor-t09-offline-retry with args: []
+18:08:55.464 [GazeAnchor LEAF] T09 Reposition stayed failed through reconnect until explicit Retry
+18:08:55.714 [GazeAnchor LEAF] T09 Reset Demo cleared a delivered request
+18:08:55.715 LEAF PASSED: gazeanchor-t09-offline-retry
+18:09:06.905 LEAF RUNS: gazeanchor-t10-tracking-interruption with args: []
+18:09:09.343 [GazeAnchor LEAF] T10 native tracking interruption cleared partial dwell; fresh dwell opened after recovery
+18:09:09.344 LEAF PASSED: gazeanchor-t10-tracking-interruption
+18:09:21.907 LEAF RUNS: gazeanchor-t11-reachability-benchmark with args: []
+18:09:26.923 [GazeAnchor] Trial ended | {"mode":"Fixed","limits":{"left":-12,"right":12,"down":-8,"up":8},"reachableTargetsCount":1,"cumulativeHeadRotationDeg":48.94,"trialDurationSec":4.69,"taskCompletionTimeSec":null,"successfulSelections":1,"accidentalAborts":0,"blockedByCooldownCount":0,"completedTasks":1}
+18:09:26.973 [GazeAnchor LEAF] T11 fixed | 1/3 tasks   ·   4.7 s   ·   48.9° travel   ·   1 actions
+18:09:35.643 [GazeAnchor] Trial ended | {"mode":"Adaptive","limits":{"left":-12,"right":12,"down":-8,"up":8},"reachableTargetsCount":3,"cumulativeHeadRotationDeg":77.28,"trialDurationSec":7.48,"taskCompletionTimeSec":7.48,"successfulSelections":3,"accidentalAborts":0,"blockedByCooldownCount":0,"completedTasks":3}
+18:09:35.644 [GazeAnchor] Care acknowledged | chime=false | task 3/3
+18:09:35.688 [GazeAnchor LEAF] T11 adaptive | 3/3 tasks   ·   7.5 s   ·   77.3° travel   ·   3 actions
+18:09:46.383 [GazeAnchor LEAF] T11 rotor High 11.88 rad/s | Low 3.93 rad/s | Off stationary
+18:09:46.541 LEAF PASSED: gazeanchor-t11-reachability-benchmark

@@ -14,6 +14,8 @@ Spatial placement preserves the relationship between each control and the applia
 
 ## Run in Lens Studio
 
+For a Git clone, fetch the packaged assets with `git lfs pull` before opening the project.
+
 1. Open `GazeAnchor.esproj` in Lens Studio **5.23.2.26081320**. The project targets Spectacles and includes the legacy Spectacles Interaction Kit and Spectacles UI Kit.
 2. Set Preview to **SPECS 27 Interactive**. Right-drag to look around and click to simulate a pinch. Start at the seated neutral view.
 3. **Reset Demo** restores the restricted profile and Fixed mode. From **Guided sweep**, capture comfortable Left, Right, Up and Down limits. Return to neutral for the steady hold. Use **Fixed / Adaptive** to compare placements. **Next profile** cycles the labeled restricted, moderate, and wide presets.
