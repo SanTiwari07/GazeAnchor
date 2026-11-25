@@ -51,9 +51,9 @@ GazeAnchor uses camera-forward head direction and mouse-simulated Preview input.
 - Its object-linked proxy design takes inspiration from [Reality Proxy](https://doi.org/10.1145/3746059.3747709).
 - Spectacles Interaction Kit, Spectacles UI Kit, LEAF and the installed helper packages come from Snap’s Lens Studio Asset Library and retain their upstream terms.
 
-## Team
+## Contributors
 
-- Shambhavi Patil
+- [Shambhavi Patil](https://github.com/Shambhavi500)
 - Sanskar Tiwari
 
 The [approved design brief](devpost/design-brief.md), [planning documents](docs/planning/README.md), and [submission checklist](devpost/submission-checklist.md) document the Learn AR with SPECS Round 2 workflow. The team used the Devpost Learn skill pack in a coding agent and built the Lens with CLAD, Lens Studio, and Lens Studio MCP.
