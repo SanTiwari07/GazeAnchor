@@ -1,0 +1,82 @@
+- !<AssetImportMetadata/2cd62353-0774-4fca-a3fb-9b42ff6e93c4>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 442035aa-aa2e-4c3b-a438-e3ecab7ad601
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 442035aa-aa2e-4c3b-a438-e3ecab7ad601
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 676b2829-9187-4fa3-a9ac-2ce0b0a8610a
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/676b2829-9187-4fa3-a9ac-2ce0b0a8610a>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: ee317ca4-f405-4332-8964-33173e7cd20c
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    ackClip: false
+    camera: false
+    care: false
+    cube: false
+    cyan: false
+    dwellSeconds: false
+    fan: false
+    lamp: false
+    lampOff: false
+    lampOn: false
+    room: false
+    rotor: false
+    shade: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - camera: !<reference.Camera> 00000000-0000-0000-0000-000000000000
+      room: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      lamp: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      fan: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      care: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      rotor: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      shade: !<reference.RenderMeshVisual> 00000000-0000-0000-0000-000000000000
+      lampOn: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      lampOff: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      cube: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      cyan: !<reference.Material> 00000000-0000-0000-0000-000000000000
+      ackClip: !<reference.AudioTrackAsset> 00000000-0000-0000-0000-000000000000
+      dwellSeconds: 0.950000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Camera camera
+    - // @input SceneObject room
+    - // @input SceneObject lamp
+    - // @input SceneObject fan
+    - // @input SceneObject care
+    - // @input SceneObject rotor
+    - // @input Component.RenderMeshVisual shade
+    - // @input Asset.Material lampOn
+    - // @input Asset.Material lampOff
+    - // @input Asset.RenderMesh cube
+    - // @input Asset.Material cyan
+    - // @input Asset.AudioTrackAsset ackClip
+    - '// @input float dwellSeconds = 0.95 {"hint":"Head-pointing dwell threshold in seconds"}'
