@@ -65,7 +65,7 @@ The compiler error was corrected by reading the successful selection count. Pack
 
 ## K. Git and submission
 
-The Lens project and evidence are committed on the existing local `main` branch. The project snapshot is `f705476` (`Restore and verify the GazeAnchor Lens`). The initial verification took place before the Git remote was configured. The approved brief, short description, submission checklist and local demonstration are ready for team review. Reviewer repository access, public YouTube upload and Devpost submission require the team's account access and authorization. [Submission checklist](submission-checklist.md)
+The verified Lens snapshot is `f705476` (`Restore and verify the GazeAnchor Lens`). The project repository and narrated 2:55 demo were publicly accessible on November 26, 2026. [Public repository](https://github.com/SanTiwari07/GazeAnchor) · [YouTube demonstration](https://youtu.be/TXR-9WyQL4g)
 
 ## L. Decisions and remaining deviations
 
@@ -77,4 +77,4 @@ The Lens project and evidence are committed on the existing local `main` branch.
 
 ## M. Readiness verdict
 
-**Demo recording available.** The primary and regression workflows ran in the saved, recovered project, and a local demo is available. Submission awaits YouTube publication and the authorized Devpost entry.
+The saved Lens passed its Preview acceptance run. The team can use the repository link, video and English description in the [submission checklist](submission-checklist.md) to complete its Devpost entry.

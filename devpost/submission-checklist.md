@@ -2,32 +2,29 @@
 
 **Team** — Shambhavi Patil and Sanskar Tiwari
 
-**Deadline** — December 7, 2026 at 5:00 p.m. EST, December 8 at 3:30 a.m. IST. [Official rules](https://learn-specs.devpost.com/rules)
+**Submit by** — December 7, 2026 at 5 p.m. EST (December 8 at 3:30 a.m. IST). [Official rules](https://learn-specs.devpost.com/rules) · [Submission requirements](https://learn-specs.devpost.com/)
 
-## Short project description
+## Copy for the submission form
 
-GazeAnchor is a SPECS Lens for exploring independent room control and everyday comfort requests for seated people with limited upper-limb movement, comfortable head range, or speech. It measures the wearer’s signed movement limits and moves out-of-range controls into reach using spatial proxies tethered to their room objects. In Interactive Preview, Fixed mode offers one reachable control under restricted simulated movement. The Adaptive Spatial Accessibility Engine brings all three into range while keeping the lamp at its original location. Building the Lens showed why reachability also depends on the placement of each action after its target opens. The fan, lamp, switch hardware and caregiver bridge are simulations.
+GazeAnchor lets a seated person with limited head or hand movement control a simulated room on Snap Spectacles. After a short sweep measures how far the wearer can comfortably look, the Lens places tethered controls inside that range. The wearer can turn on a lamp, change the fan speed or ask for water using head direction and a short hold. In Lens Studio Preview, the same movement limits allowed one task with fixed controls and all three with adaptation. We learned to check the whole action sequence. A reachable fan marker only helps if the wearer can also select the speed they want.
 
-## Preflight
+- [Public project repository](https://github.com/SanTiwari07/GazeAnchor)
+- [Public YouTube demonstration with Lens Studio Preview footage · 2:55](https://www.youtube.com/watch?v=TXR-9WyQL4g)
+- Screenshots for the project gallery show [Fixed](evidence/fixed-reachability.png), [Adaptive](evidence/adaptive-tethers.png) and [an acknowledged water request](../docs/media/water-request.jpg).
 
-- [x] Approved design brief is in the repository’s `devpost/` directory.
-- [x] The project targets Spectacles and the live reachability transformation has Preview evidence.
-- [x] Verify the saved project’s cold start and repeated Preview behavior. All twelve final LEAF scenarios passed.
-- [x] Render and review a 2:55 local MP4 with narration, captions and actual Preview footage. The recording uses local narration and excludes Lens Studio speaker audio.
-- [ ] Make the authorized GitHub, GitLab or Bitbucket repository accessible to reviewers. Private submissions use GitHub or GitLab and require the two reviewer invitations listed in the official rules.
-- [ ] Review and publish a YouTube video under three minutes that shows the working Lens in Lens Studio Preview.
-- [ ] Enter the verified repository and video links, short description and team details on Devpost.
+## Repository and demo review
 
-Devpost assesses design, technical implementation, innovation, and presentation. Keep the video centered on the measured spatial transformation and show tasks completing in the actual Preview. [Round 2 requirements and judging criteria](https://learn-specs.devpost.com/)
-
-## 2:55 recording outline
-
-| Time | Preview evidence and narration |
+| Submission item | Evidence |
 | --- | --- |
-| 0:00–0:20 | Describe the seated use case and show the furnished room from neutral. |
-| 0:20–0:45 | In Fixed under the restricted profile, show 1/3 reachable and use head dwell to operate Lamp. |
-| 0:45–1:10 | Capture comfortable left, right, up and down limits and hold at neutral. Switch to Adaptive. Show 3/3, the two tethers and the Lamp marker at its original object. |
-| 1:10–1:40 | Let a brief glance cancel, then dwell on the Fan proxy and select High. |
-| 1:40–2:10 | Send Water and show Delivered. Use the simulation operator control to acknowledge explicitly. Show the cue directing attention back to Care beacon. |
-| 2:10–2:40 | Show the measured reachability counts and successful tests. Include timing and angular travel only with the recorded trial conditions. |
-| 2:40–2:55 | Identify the Preview simulations and the hardware and usability checks still open. End on “GazeAnchor — A world that adapts to you.” |
+| Project created during the submission period | The [initial project commit](https://github.com/SanTiwari07/GazeAnchor/commit/f705476) and [Preview log](evidence/preview-results.txt) are dated November 25, 2026. The team confirms originality on entry. |
+| Skill-pack planning in the root `devpost/` folder | [Approved design brief](design-brief.md) and [Devpost Learn skill revision](../skills-lock.json). |
+| Spectacles Lens built using the coding agent, CLAD, Lens Studio and its MCP | [Lens Studio project](../GazeAnchor.esproj), [engineering record](engineering-report.md) and [cold-start verification](build-verification.md). |
+| Functionality available for judging | The [README](../README.md) shows the interaction, Preview setup and repeatable trial. [Twelve recorded integration scenarios](testing-report.md) cover the saved Lens. |
+| Accessible repo, English description and public demo | The repository and full YouTube demo were publicly accessible on November 26. The video runs 175 seconds and includes narrated Preview footage. The English project description appears above. |
+| Attribution and licensing | The [MIT License](../LICENSE) covers the team's original code. Third-party materials include the [bundled Lens Studio packages](../Packages/) and [Devpost planning skill](../agent/skills/plan-lens/). Their providers' terms apply. |
+
+## Team actions on Devpost
+
+- [ ] Confirm each member's eligibility, team representative, ownership and that the Lens was newly built during the submission period. Disclose any additional pre-existing work and confirm rights to the third-party software and to the media, music and marks used in the submission.
+- [ ] Register, enter both team members, paste the repository URL, full demo URL and description into the English submission form, complete its remaining required fields and submit by the deadline. Verify the submission receipt in Devpost.
+- [ ] Keep the repository, Lens files and demo freely accessible through the end of judging on December 15, 2026 at 5 p.m. EST.

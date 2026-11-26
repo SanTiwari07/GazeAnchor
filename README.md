@@ -1,39 +1,43 @@
+![GazeAnchor — room controls within comfortable reach](docs/media/banner.jpg)
+
 # GazeAnchor
 
-**Hands-free room controls that adapt to how far a seated wearer can comfortably turn.** Built for Snap Spectacles at Learn AR with SPECS Round 2.
+The bedside lamp is in front of you. The fan is off to your right, past the point where you can comfortably turn your head. How do you turn it up from your seat?
 
-Imagine turning on a bedside lamp, adjusting a fan across the room, and asking a caregiver for water. A fixed AR interface puts each control on its object. That works for the lamp in front of you. If the fan sits past the point where you can turn your head, its control is visible to someone exploring the scene but unreachable from your seat.
+GazeAnchor is a Snap Spectacles Lens for people who have limited head or hand movement. It measures how far the wearer can comfortably look in each direction, then brings a control for the distant fan into that space. A blue line leads from the control back to the fan. The wearer can turn it up, dim the lamp or ask for water by pointing their head and holding still.
 
-GazeAnchor measures the wearer's range from a seated position. It leaves reachable controls on their objects and places a second, selectable marker inside that range for an object farther away. A visible line connects the marker to its source. Selecting the nearby fan marker changes the fan across the room. In the recorded restricted-range Preview trial, this change let the wearer complete **all three tasks in Adaptive mode, up from one in Fixed mode**, with the same movement limits.
+**[Watch the 2:55 demo](https://youtu.be/TXR-9WyQL4g)** · [Watch the 44-second overview](https://youtube.com/shorts/jcPbjKkYRo4) · [Run it in Lens Studio](#run-it-in-lens-studio)
 
-[Watch the full demo](https://youtu.be/TXR-9WyQL4g) · [Watch the Short](https://youtube.com/shorts/jcPbjKkYRo4?feature=share) · [Run the Lens](#run-the-lens) · [Inspect the results](#preview-results)
+## The same room from the same seat
 
-[![Frame from the demonstration showing the lamp and the “Ask for water” option](docs/media/room-demo.jpg)](https://youtu.be/TXR-9WyQL4g?t=100)
+| Fixed · 1 of 3 controls within reach | Adaptive · 3 of 3 controls within reach |
+| --- | --- |
+| ![Fixed Preview. The lamp has a blue square beside its shade. The fan and care controls are outside the seated range.](devpost/evidence/fixed-reachability.png) | ![Adaptive Preview. Two blue squares labeled Fan and Care beacon appear to the right of the lamp, with lines leading to their objects.](devpost/evidence/adaptive-tethers.png) |
+| The square beside the lampshade lets the wearer control the lamp. Reaching the other two markers would require a larger head turn. | The lamp marker stays in place. The upper square now controls the fan, and the lower square opens care requests. |
 
-*At [1:40 in the demo](https://youtu.be/TXR-9WyQL4g?t=100), look for the Care action beside the lamp. The lamp's own marker stays attached to the appliance.*
+Both screenshots use the same simulated head movement limits of 12° to either side and 8° up or down. The wearer can also choose **Guided sweep** to measure each direction separately. Turn comfortably toward each prompt, choose **Capture / Next**, then face forward and hold for two seconds. A smaller range can fit fewer controls. [See a measured sweep in Preview](devpost/evidence/measured-adaptive-reachability.png)
 
-## What the wearer does
+## Turn up the fan
 
-1. **Measure comfortable movement.** Start in a neutral seated position. In **Guided sweep**, look comfortably left, right, up and down, then return to neutral and hold for two seconds. The Lens records each direction independently. In one recorded sweep, the wearer reached 12° left, 11° right, 8° up and 7° down.
-2. **Compare the same room in two modes.** In **Fixed**, each marker sits on its room object. In **Adaptive**, the lamp stays in place while the fan and Care beacon gain separate reachable markers called *proxies*. Follow either tether to identify its object before choosing an action.
-3. **Look, hold, then choose.** Aim your head at a marker until the progress ring fills and its action menu opens. Aim at an action and hold again to confirm it. A glance can reveal progress without changing the room. Looking away cancels an unfinished hold. After a command, release focus to re-arm selection.
-4. **See what happened.** The lamp shade changes appearance, the fan rotor changes speed, or the Care beacon displays the request status. **Switch select** provides another way to select the focused item and navigate timed action choices in Preview.
+Point your head at the **Fan** square until the ring fills and the choices open. Hold on **High** and the blades spin faster across the room. A brief glance only starts the ring. Looking away cancels the unfinished selection. The same two holds let you turn the lamp on, dim it or switch it off.
 
-| Room control | Choices | What a judge can observe |
-| --- | --- | --- |
-| Lamp | On, Dim, Off | The shade changes at its original location. With the restricted preset, the lamp is reachable in both modes. |
-| Fan | High, Low, Off | The blades change speed or stop. In Adaptive mode the wearer can operate the distant fan from its tethered marker. |
-| Care beacon | Water, Reposition, Temperature, Assistance | A request enters the local caregiver simulation. The wearer can see whether it was delivered, acknowledged or failed. |
+![Frame from the recorded Preview demo. Fan high appears above the two tethered controls after the wearer selects High.](docs/media/fan-control.jpg)
 
-### Follow a water request from both sides
+## Ask for water
 
-Select **Care beacon → Water** as the wearer. With the local caregiver panel online, the request moves from pending to delivered. It stays delivered until someone opens **Caregiver sim** and acknowledges it. This distinction matters when judging the demo. Delivery means the panel received the request. Acknowledgment means the operator acted on it.
+Choose **Care beacon → Water**. *Delivered* means the local caregiver panel received the request. When the operator presses **Acknowledge**, the wearer sees *Water · Acknowledged*. If the wearer has turned away, an arrow points back to the beacon and clears when they look back. [See the arrow in Preview](devpost/evidence/off-view-cue.png)
 
-To see how the wearer notices a reply, turn away from the beacon before acknowledging. An arrow points back toward it, and the Lens requests a single spatial chime. Look back to clear the arrow and read the status. The operator can then mark the request complete. To exercise recovery, take the panel offline, send a new request, reconnect and choose **Retry**. The failed request waits for that deliberate retry.
+![Frame from the recorded demo. The caregiver panel shows Water · Acknowledged above the Acknowledge, Online / Offline and Complete controls.](docs/media/water-request.jpg)
 
-## Run the Lens
+## What the trial showed
 
-Install Git LFS and Lens Studio **5.23.2.26081320**. Fetch the large assets before opening the project.
+With the limits pictured above, the Fixed trial completed **one task** (lamp on). Adaptive completed **all three** (lamp on, fan high and a water request acknowledged). The placement lesson was easy to miss during design. Bringing the fan marker within reach only helps if the wearer can also reach **High** after its menu opens.
+
+The trial used simulated head poses, appliances and a local caregiver panel in Lens Studio. Comfort on physical glasses, real appliance control and remote request delivery still need testing. The recorded integration run passed all 12 LEAF scenarios. [Benchmark and reproduction steps](devpost/benchmark-results.md) · [Preview log](devpost/evidence/preview-results.txt) · [Test report](devpost/testing-report.md)
+
+## Run it in Lens Studio
+
+With Git LFS and Lens Studio **5.23.2.26081320** installed, fetch the project and its assets.
 
 ```sh
 git lfs install
@@ -42,66 +46,13 @@ cd GazeAnchor
 git lfs pull
 ```
 
-Open `GazeAnchor.esproj` in Lens Studio, select **SPECS 27**, and switch Preview to **Interactive**. Right-drag to look around. A click simulates a pinch on an operator control. Stay at the same seated position for the comparison so that walking closer does not change what is reachable.
+1. Open `GazeAnchor.esproj`, select **SPECS 27** and start **Interactive** Preview. Right-drag to aim your head and click to operate a panel button.
+2. Choose **Reset Demo**. From the seated position, the restricted preset starts in **Fixed** with one reachable control. Click **Fixed / Adaptive** to reveal the two tethered controls.
+3. Try **Fan → High**, then **Care beacon → Water**. Open **Caregiver sim** and click **Acknowledge** to see the reply. **Switch select** also lets you choose the focused item using a simulated switch.
+4. To replay the measured comparison, run **T11** in the LEAF panel. To run the 11 standalone logic tests, use `node --test tests/*.test.mjs` with Node.js 26.
 
-### Reproduce the three-task comparison
+## Team and credits
 
-| Step | What to do | What to look for |
-| --- | --- | --- |
-| 1. Establish the baseline | Choose **Reset Demo**. Face forward in Fixed mode with the restricted preset and start **Benchmark**. | The counter reads **1/3 reachable**. This counts selectable targets before any task is completed. |
-| 2. Try the fixed controls | Dwell on Lamp, select **On**, then try to aim at Fan and Care while staying inside the movement limits. Press **Benchmark** again to end the incomplete run. | The lamp changes and task progress reaches **1/3**. The other two markers remain outside the range. |
-| 3. Repeat with adaptation | Choose **Reset Demo**, keep the restricted preset, toggle to **Adaptive**, face forward and start **Benchmark** again. | The counter reads **3/3 reachable**. The lamp stays on its anchor. Two separate markers lead back to Fan and Care. |
-| 4. Finish the same sequence | Select **Lamp → On**, **Fan → High**, then **Care → Water**. Acknowledge Water in **Caregiver sim**. | The lamp responds, the fan spins, and acknowledgment advances task progress to **3/3**. The completed trial ends automatically. |
-| 5. Inspect the record | Find `Trial ended` in Lens Studio Logger for each run. | Each entry records the mode, bounds, task count, elapsed time and accumulated camera rotation. |
+Built by [Shambhavi Patil](https://github.com/Shambhavi500) and [Sanskar Tiwari](https://github.com/SanTiwari07). The design draws on [Ability-Based Design](https://doi.org/10.1145/1952383.1952384) and [Reality Proxy](https://doi.org/10.1145/3746059.3747709). The [design brief](devpost/design-brief.md) records the interaction decisions, and the [engineering report](devpost/engineering-report.md) traces them to the implementation.
 
-To try your own range after the comparison, run **Guided sweep** and toggle the modes again. The preset gives judges repeatable inputs. The sweep shows how placement responds to unequal left, right, up and down limits.
-
-## Preview results
-
-The recorded benchmark used the same restricted movement profile and task sequence in both modes. LEAF supplied synthetic head poses through the Preview camera.
-
-| Measurement | Fixed | Adaptive |
-| --- | ---: | ---: |
-| Reachable controls | 1 of 3 | 3 of 3 |
-| Completed tasks | 1 of 3 | 3 of 3 |
-| Trial duration | 4.69 s, stopped incomplete | 7.48 s, all tasks completed |
-| Total camera rotation | 48.94° | 77.28° |
-| Duplicate commands | 0 | 0 |
-
-The restricted benchmark allowed 12° of head rotation to either side and 8° up or down. Both runs began at neutral. Fixed stopped after the lamp task. Adaptive included the fan and the acknowledged water request, so its longer duration and greater rotation cover two additional tasks. The comparison establishes a change in **which tasks were reachable**. Measuring speed or effort for the same completed work would require a different trial.
-
-### What was tested
-
-| Layer | Coverage | Recorded result |
-| --- | --- | --- |
-| Standalone logic | Placement for restricted and asymmetric ranges, a range too small to fit all controls, invalid directions, camera travel, and valid and invalid caregiver transitions | 11/11 passed |
-| Lens Studio integration (LEAF) | Guided sweep, tether alignment, dwell timing, brief glances, jitter, overlapping targets, cancellation, tracking interruption, caregiver delivery and retry, the benchmark, and the off-view cue | 12/12 passed |
-
-Run `node --test tests/*.test.mjs` with Node.js 26 for the standalone suite. In Lens Studio, open the LEAF panel (Leaf 2.0.0) and run registered GazeAnchor scenarios one at a time. **T11** reproduces the task benchmark. **T09** exercises failure and retry. **T12** exercises acknowledgment while the wearer faces away.
-
-The room, appliances, switch and caregiver panel are simulated. Preview verifies the interaction logic with synthetic camera movement. Wearer comfort over time, tracking on physical glasses, audible feedback, external switches, paired appliances and remote caregiver delivery remain unverified.
-
-[Benchmark protocol and results](devpost/benchmark-results.md) · [Recorded Preview log](devpost/evidence/preview-results.txt) · [Scenario-by-scenario testing report](devpost/testing-report.md)
-
-## How the Lens places a control
-
-The tracked camera supplies the wearer's forward direction. Calibration defines an angular window around the seated neutral pose. For each room object, the placement logic checks whether its direction falls inside that window. A reachable object keeps its original marker. For an out-of-range object in Adaptive mode, the solver looks for a separate marker position within an inset of the window, leaving room between selectable targets. A very narrow range can still leave an object unreachable.
-
-The scene keeps the fan rotor and lamp shade at their authored positions. Only the interaction marker needs a new location. The controller resolves a selection back to the original object, which is why turning the fan on at a proxy changes the distant rotor. Care actions use the same input path but send the selected request to the local caregiver state machine.
-
-## Inside the project
-
-| Entry point | Responsibility |
-| --- | --- |
-| [Room scene](Assets/Scene.scene) | Room geometry, camera and interaction bindings |
-| [Lens controller](Assets/Scripts/GazeAnchorMain.ts) | Calibration, dwell input, room actions and benchmark telemetry |
-| [Reach calculations](Assets/Scripts/Reach.ts) | Checks movement limits and places separated proxy controls |
-| [Spatial UI](Assets/Scripts/GazeAnchorUI.ts) | Builds the controls and labels visible in the room |
-| [Caregiver bridge](Assets/Scripts/room/CaregiverCommBridge.ts) | Tracks local delivery, failure, retry and acknowledgment |
-| [Preview scenarios](Assets/Scripts/tests/) | Exercises the Lens through simulated wearer and operator input |
-
-## Design and credits
-
-Built by [Shambhavi Patil](https://github.com/Shambhavi500) and [Sanskar Tiwari](https://github.com/SanTiwari07) for Learn AR with SPECS Round 2. The project uses Snap’s Spectacles Interaction Kit, Spectacles UI Kit and LEAF. These components retain their upstream terms.
-
-The calibration design draws on [Ability-Based Design](https://doi.org/10.1145/1952383.1952384), and the object-linked controls draw on [Reality Proxy](https://doi.org/10.1145/3746059.3747709). The team’s design decisions and build evidence are available in the [design brief](devpost/design-brief.md), [planning documents](docs/planning/README.md), [build verification](devpost/build-verification.md) and [submission checklist](devpost/submission-checklist.md).
+The team's original GazeAnchor code is available under the [MIT License](LICENSE). Snap packages, bundled assets from other creators and the Devpost planning skill retain their respective terms. [Bundled packages](Packages/) · [Devpost skill license](agent/skills/plan-lens/LICENSE)
