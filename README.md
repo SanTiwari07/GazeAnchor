@@ -1,31 +1,35 @@
 # GazeAnchor
 
-![GazeAnchor — room controls within comfortable reach, illustrated with the Lens Studio room](docs/media/banner.jpg)
+**Hands-free room controls that adapt to how far a seated wearer can comfortably turn.** Built for Snap Spectacles at Learn AR with SPECS Round 2.
 
-A lamp is straight ahead. The fan is farther to the side than a seated wearer can comfortably turn. GazeAnchor leaves the lamp control where it is and brings a second control for the fan into view. A thin line leads back to the fan so the wearer can see what they are about to change.
+Imagine turning on a bedside lamp, adjusting a fan across the room, and asking a caregiver for water. A fixed AR interface puts each control on its object. That works for the lamp in front of you. If the fan sits past the point where you can turn your head, its control is visible to someone exploring the scene but unreachable from your seat.
 
-Built for Snap Spectacles, the Lens uses head direction and a steady hold to operate a simulated lamp, change fan speed, or send a comfort request. In the recorded restricted-range trial, the wearer could reach **one of three controls in Fixed mode and all three in Adaptive mode**.
+GazeAnchor measures the wearer's range from a seated position. It leaves reachable controls on their objects and places a second, selectable marker inside that range for an object farther away. A visible line connects the marker to its source. Selecting the nearby fan marker changes the fan across the room. In the recorded restricted-range Preview trial, this change let the wearer complete **all three tasks in Adaptive mode, up from one in Fixed mode**, with the same movement limits.
 
-[Watch the full demonstration](https://youtu.be/TXR-9WyQL4g) · [Watch the YouTube Short](https://youtube.com/shorts/jcPbjKkYRo4?feature=share) · [Run the Lens](#run-the-lens) · [Preview results](#preview-results)
+[Watch the full demo](https://youtu.be/TXR-9WyQL4g) · [Watch the Short](https://youtube.com/shorts/jcPbjKkYRo4?feature=share) · [Run the Lens](#run-the-lens) · [Inspect the results](#preview-results)
 
-## What changes when reach changes?
+[![Frame from the demonstration showing the lamp and the “Ask for water” option](docs/media/room-demo.jpg)](https://youtu.be/TXR-9WyQL4g?t=100)
 
-| Fixed placement | Adaptive placement |
-| --- | --- |
-| ![Fixed mode showing one reachable target](devpost/evidence/fixed-reachability.png) | ![Adaptive mode showing three reachable targets after the guided sweep](devpost/evidence/measured-adaptive-reachability.png) |
-| The controls stay on the lamp, fan and Care beacon. Only the lamp falls inside the restricted range. | The lamp stays put. Tethered controls bring the fan and Care beacon inside the measured range. |
+*At [1:40 in the demo](https://youtu.be/TXR-9WyQL4g?t=100), look for the Care action beside the lamp. The lamp's own marker stays attached to the appliance.*
 
-**Calibrate.** From a seated neutral position, the wearer looks comfortably left, right, up and down, then holds steady for two seconds. Each limit is recorded separately, so a wearer can have more reach on one side.
+## What the wearer does
 
-**Select.** Hold head direction on a marker to open its actions. Hold again on an action, such as **Fan → High**, to apply it. Moving away cancels a dwell in progress. After selection, the wearer must release focus before repeating the command. The **Switch select** button also supports focused selection and timed scanning in Preview.
+1. **Measure comfortable movement.** Start in a neutral seated position. In **Guided sweep**, look comfortably left, right, up and down, then return to neutral and hold for two seconds. The Lens records each direction independently. In one recorded sweep, the wearer reached 12° left, 11° right, 8° up and 7° down.
+2. **Compare the same room in two modes.** In **Fixed**, each marker sits on its room object. In **Adaptive**, the lamp stays in place while the fan and Care beacon gain separate reachable markers called *proxies*. Follow either tether to identify its object before choosing an action.
+3. **Look, hold, then choose.** Aim your head at a marker until the progress ring fills and its action menu opens. Aim at an action and hold again to confirm it. A glance can reveal progress without changing the room. Looking away cancels an unfinished hold. After a command, release focus to re-arm selection.
+4. **See what happened.** The lamp shade changes appearance, the fan rotor changes speed, or the Care beacon displays the request status. **Switch select** provides another way to select the focused item and navigate timed action choices in Preview.
 
-**Request care.** Select **Water**, **Reposition**, **Temperature** or **Assistance**. A delivered request waits for acknowledgment from the local caregiver panel. If the panel is offline, the failed request can be retried. When acknowledgment arrives outside the wearer's view, an arrow points back toward the Care beacon.
+| Room control | Choices | What a judge can observe |
+| --- | --- | --- |
+| Lamp | On, Dim, Off | The shade changes at its original location. With the restricted preset, the lamp is reachable in both modes. |
+| Fan | High, Low, Off | The blades change speed or stop. In Adaptive mode the wearer can operate the distant fan from its tethered marker. |
+| Care beacon | Water, Reposition, Temperature, Assistance | A request enters the local caregiver simulation. The wearer can see whether it was delivered, acknowledged or failed. |
 
-[![Frame from the full demonstration showing “Ask for water,” the anchored lamp and the Care beacon](docs/media/room-demo.jpg)](https://youtu.be/TXR-9WyQL4g?t=100)
+### Follow a water request from both sides
 
-*From the recorded demonstration. The square on the lamp stays with the appliance while the wearer can select the nearby Care beacon.*
+Select **Care beacon → Water** as the wearer. With the local caregiver panel online, the request moves from pending to delivered. It stays delivered until someone opens **Caregiver sim** and acknowledges it. This distinction matters when judging the demo. Delivery means the panel received the request. Acknowledgment means the operator acted on it.
 
-[Inspect the control tethers](devpost/evidence/adaptive-tethers.png) · [See the off-view acknowledgment cue](devpost/evidence/off-view-cue.png)
+To see how the wearer notices a reply, turn away from the beacon before acknowledging. An arrow points back toward it, and the Lens requests a single spatial chime. Look back to clear the arrow and read the status. The operator can then mark the request complete. To exercise recovery, take the panel offline, send a new request, reconnect and choose **Retry**. The failed request waits for that deliberate retry.
 
 ## Run the Lens
 
