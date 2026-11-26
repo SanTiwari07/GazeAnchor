@@ -42,10 +42,19 @@ cd GazeAnchor
 git lfs pull
 ```
 
-1. Open `GazeAnchor.esproj` and select **SPECS 27 Interactive** in Preview. Right-drag to look around and click to simulate a pinch.
-2. Select **Reset Demo** for the restricted preset in Fixed mode. Check which room controls are reachable. To measure a fresh range, choose **Guided sweep** and follow the four directions and neutral hold.
-3. Toggle **Fixed / Adaptive**. Find the lamp, fan and Care beacon, then follow each tether back to its room object.
-4. Turn the lamp on, set the fan to high and request water. Open **Caregiver sim** to acknowledge the request. To reproduce the measured trial, select **Benchmark** from neutral before the first action. Press it again to end an incomplete trial.
+Open `GazeAnchor.esproj` in Lens Studio, select **SPECS 27**, and switch Preview to **Interactive**. Right-drag to look around. A click simulates a pinch on an operator control. Stay at the same seated position for the comparison so that walking closer does not change what is reachable.
+
+### Reproduce the three-task comparison
+
+| Step | What to do | What to look for |
+| --- | --- | --- |
+| 1. Establish the baseline | Choose **Reset Demo**. Face forward in Fixed mode with the restricted preset and start **Benchmark**. | The counter reads **1/3 reachable**. This counts selectable targets before any task is completed. |
+| 2. Try the fixed controls | Dwell on Lamp, select **On**, then try to aim at Fan and Care while staying inside the movement limits. Press **Benchmark** again to end the incomplete run. | The lamp changes and task progress reaches **1/3**. The other two markers remain outside the range. |
+| 3. Repeat with adaptation | Choose **Reset Demo**, keep the restricted preset, toggle to **Adaptive**, face forward and start **Benchmark** again. | The counter reads **3/3 reachable**. The lamp stays on its anchor. Two separate markers lead back to Fan and Care. |
+| 4. Finish the same sequence | Select **Lamp → On**, **Fan → High**, then **Care → Water**. Acknowledge Water in **Caregiver sim**. | The lamp responds, the fan spins, and acknowledgment advances task progress to **3/3**. The completed trial ends automatically. |
+| 5. Inspect the record | Find `Trial ended` in Lens Studio Logger for each run. | Each entry records the mode, bounds, task count, elapsed time and accumulated camera rotation. |
+
+To try your own range after the comparison, run **Guided sweep** and toggle the modes again. The preset gives judges repeatable inputs. The sweep shows how placement responds to unequal left, right, up and down limits.
 
 ## Preview results
 
@@ -59,11 +68,26 @@ The recorded benchmark used the same restricted movement profile and task sequen
 | Total camera rotation | 48.94° | 77.28° |
 | Duplicate commands | 0 | 0 |
 
-The two durations cover different amounts of work. The result demonstrates improved reachability in this simulated room. Physical comfort, real-device tracking, paired appliances, hardware switches and remote caregiver delivery still need evaluation.
+The restricted benchmark allowed 12° of head rotation to either side and 8° up or down. Both runs began at neutral. Fixed stopped after the lamp task. Adaptive included the fan and the acknowledged water request, so its longer duration and greater rotation cover two additional tasks. The comparison establishes a change in **which tasks were reachable**. Measuring speed or effort for the same completed work would require a different trial.
 
-The project records **12 passing LEAF scenarios** and **11 passing standalone tests**. Run `node --test tests/*.test.mjs` with Node.js 26 for the standalone suite. For integrated scenarios, run the registered GazeAnchor tests one at a time in the Preview LEAF panel (Leaf 2.0.0).
+### What was tested
 
-[Benchmark protocol and results](devpost/benchmark-results.md) · [Preview log](devpost/evidence/preview-results.txt) · [Testing report](devpost/testing-report.md)
+| Layer | Coverage | Recorded result |
+| --- | --- | --- |
+| Standalone logic | Placement for restricted and asymmetric ranges, a range too small to fit all controls, invalid directions, camera travel, and valid and invalid caregiver transitions | 11/11 passed |
+| Lens Studio integration (LEAF) | Guided sweep, tether alignment, dwell timing, brief glances, jitter, overlapping targets, cancellation, tracking interruption, caregiver delivery and retry, the benchmark, and the off-view cue | 12/12 passed |
+
+Run `node --test tests/*.test.mjs` with Node.js 26 for the standalone suite. In Lens Studio, open the LEAF panel (Leaf 2.0.0) and run registered GazeAnchor scenarios one at a time. **T11** reproduces the task benchmark. **T09** exercises failure and retry. **T12** exercises acknowledgment while the wearer faces away.
+
+The room, appliances, switch and caregiver panel are simulated. Preview verifies the interaction logic with synthetic camera movement. Wearer comfort over time, tracking on physical glasses, audible feedback, external switches, paired appliances and remote caregiver delivery remain unverified.
+
+[Benchmark protocol and results](devpost/benchmark-results.md) · [Recorded Preview log](devpost/evidence/preview-results.txt) · [Scenario-by-scenario testing report](devpost/testing-report.md)
+
+## How the Lens places a control
+
+The tracked camera supplies the wearer's forward direction. Calibration defines an angular window around the seated neutral pose. For each room object, the placement logic checks whether its direction falls inside that window. A reachable object keeps its original marker. For an out-of-range object in Adaptive mode, the solver looks for a separate marker position within an inset of the window, leaving room between selectable targets. A very narrow range can still leave an object unreachable.
+
+The scene keeps the fan rotor and lamp shade at their authored positions. Only the interaction marker needs a new location. The controller resolves a selection back to the original object, which is why turning the fan on at a proxy changes the distant rotor. Care actions use the same input path but send the selected request to the local caregiver state machine.
 
 ## Inside the project
 
