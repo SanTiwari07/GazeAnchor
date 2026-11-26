@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/media/banner.jpg" alt="GazeAnchor — room controls within comfortable reach. Blue controls for the fan and care beacon sit beside the bedside lamp." width="100%">
+  <img src="docs/media/banner.jpg" alt="GazeAnchor — room controls within comfortable reach. Illustrated bedside scene with a reachable control tethered to a distant fan. Preview trial: 1 of 3 controls reachable in Fixed mode, 3 of 3 in Adaptive." width="100%">
 </p>
 
 <p align="center">
